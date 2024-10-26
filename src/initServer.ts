@@ -6,6 +6,7 @@ import helmet from 'helmet'
 import adminRouter from './admin/adminRouter'
 import router from './router'
 import { ErrorHandler } from './utils/errors'
+import redisMiddleware from './utils/redisMiddleware'
 
 const initServer = (port: number): { app: express.Express; server: http.Server } => {
 	const app = express()
@@ -24,6 +25,7 @@ const initServer = (port: number): { app: express.Express; server: http.Server }
 
 	app.get('/', (req, res) => res.json({ connected: true }))
 
+	app.use(redisMiddleware)
 	app.use('/v1/admin', adminRouter)
 	app.use('/v1/client', router)
 	app.use(ErrorHandler)

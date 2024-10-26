@@ -12,6 +12,19 @@ services:
     networks:
       - app_network
 
+  redis:
+    image: redis:latest
+    container_name: 'blog-app-redis'
+    ports:
+      - '6379:6379'
+    networks:
+      - app_network
+    healthcheck:
+      test: ['CMD', 'redis-cli', 'ping']
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
   api:
     container_name: 'blog-app-api'
     build:
@@ -20,17 +33,19 @@ services:
     restart: always
     depends_on:
       - db
+      - redis
     ports:
       - '5000:5000'
     environment:
       - PORT=${PORT}
       - API_DB_URL=postgresql://${DB_USER}:${DB_PASSWORD}@db:5432/${DB_NAME}
+      - API_REDIS_URL=${API_REDIS_URL}
       - API_JWT_KEY=${API_JWT_KEY}
       - API_ADMIN_EMAIL=${API_ADMIN_EMAIL}
       - API_ADMIN_PASSWORD=${API_ADMIN_PASSWORD}
       - API_CRYPTO_KEY=${API_CRYPTO_KEY}
       - API_SEED_DB=${API_SEED_DB}
-      - PROJECT_ENV=${PROJECT_ENV}
+      - PROJECT_ENV=dev
       - CORS_WHITELIST=${CORS_WHITELIST}
       - DB_USER=${DB_USER}
       - DB_PASSWORD=${DB_PASSWORD}
