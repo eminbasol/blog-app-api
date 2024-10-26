@@ -1,0 +1,163 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("API_DB_URL")
+}
+
+//admin tables
+model Admin {
+  id        Int      @id @default(autoincrement())
+  username  String   @unique
+  password  String
+  email     String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+
+  tokens Token[]
+
+  roleId Int
+  role   AdminRole @relation(fields: [roleId], references: [id], onUpdate: Cascade, onDelete: Restrict)
+}
+
+model AdminRole {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+
+  permissions AdminRoleToPermission[]
+  admins      Admin[]
+}
+
+model AdminPermission {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+
+  roles AdminRoleToPermission[]
+}
+
+model AdminRoleToPermission {
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+
+  roleId Int
+  role   AdminRole @relation(fields: [roleId], references: [id], onUpdate: Cascade, onDelete: Restrict)
+
+  permissionId Int
+  permission   AdminPermission @relation(fields: [permissionId], references: [id], onUpdate: Cascade, onDelete: Restrict)
+
+  @@id([roleId, permissionId])
+}
+
+//user tables
+model User {
+  id                   Int      @id @default(autoincrement())
+  username             String   @unique
+  password             String
+  email                String   @unique
+  twoFactorAuthEnabled Boolean? @default(false)
+  twoFactorAuthSecret  String?
+  isApproved           Boolean  @default(false)
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @default(now())
+
+  userLogs   UserLog[]
+  roles      GroupMembership[]
+  blogs      Blog[]
+  groupAdmin Group[]           @relation("GroupAdmin")
+  tokens     Token[]
+}
+
+model Group {
+  id        Int               @id @default(autoincrement())
+  name      String
+  createdAt DateTime          @default(now())
+  updatedAt DateTime          @default(now())
+  deletedAt DateTime?
+  isDeleted Boolean           @default(false)
+  members   GroupMembership[]
+  blogs     Blog[]
+
+  adminId Int
+  admin   User @relation("GroupAdmin", fields: [adminId], references: [id])
+}
+
+model Role {
+  id    Int               @id @default(autoincrement())
+  name  String            @unique
+  users GroupMembership[]
+}
+
+model GroupMembership {
+  userId  Int
+  roleId  Int
+  groupId Int
+  user    User  @relation(fields: [userId], references: [id])
+  role    Role  @relation(fields: [roleId], references: [id])
+  group   Group @relation(fields: [groupId], references: [id])
+
+  @@id([userId, roleId, groupId])
+  @@unique([userId, groupId])
+}
+
+model Blog {
+  id          Int        @id @default(autoincrement())
+  title       String
+  content     String
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @default(now())
+  publishedAt DateTime?
+  deletedAt   DateTime?
+  status      BlogStatus @default(DRAFT)
+
+  authorId Int
+  author   User @relation(fields: [authorId], references: [id])
+
+  groupId Int?
+  group   Group? @relation(fields: [groupId], references: [id])
+}
+
+enum BlogStatus {
+  DRAFT
+  PUBLISHED
+  DELETED
+  ARCHIVED
+}
+
+model Token {
+  id           Int      @id @default(autoincrement())
+  type         String
+  scope        String?
+  accessToken  String   @unique
+  refreshToken String   @unique
+  revoked      Boolean  @default(false)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @default(now())
+  expiredAt    DateTime
+
+  userId Int? // one-to-many relation between User and Token
+  user   User? @relation(fields: [userId], references: [id], onUpdate: Cascade, onDelete: Restrict)
+
+  adminId Int?
+  admin   Admin? @relation(fields: [adminId], references: [id], onUpdate: Cascade, onDelete: Restrict)
+}
+
+model UserLog {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  action    String
+  endpoint  String
+  details   String?
+  ipAddress String
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}

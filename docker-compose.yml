@@ -1,0 +1,46 @@
+version: '3.9'
+services:
+  db:
+    image: postgres:latest
+    container_name: 'blog-app-db'
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - app_network
+
+  api:
+    container_name: 'blog-app-api'
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - '5000:5000'
+    environment:
+      - PORT=${PORT}
+      - API_DB_URL=postgresql://${DB_USER}:${DB_PASSWORD}@db:5432/${DB_NAME}
+      - API_JWT_KEY=${API_JWT_KEY}
+      - API_ADMIN_EMAIL=${API_ADMIN_EMAIL}
+      - API_ADMIN_PASSWORD=${API_ADMIN_PASSWORD}
+      - API_CRYPTO_KEY=${API_CRYPTO_KEY}
+      - API_SEED_DB=${API_SEED_DB}
+      - PROJECT_ENV=${PROJECT_ENV}
+      - CORS_WHITELIST=${CORS_WHITELIST}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_NAME=${DB_NAME}
+    networks:
+      - app_network
+
+volumes:
+  postgres_data:
+
+networks:
+  app_network:
+    name: 'blog-app-network'
