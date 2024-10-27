@@ -1,0 +1,1425 @@
+{
+	"info": {
+		"_postman_id": "d87037bb-c1d1-4489-a382-b874f6436779",
+		"name": "Blog-App-API-Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19945137"
+	},
+	"item": [
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Auth",
+					"item": [
+						{
+							"name": "Admin Login",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Successful POST request\", function () {",
+											"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+											"});",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"username\": \"admin\",\n    \"password\": \"979N4GZVHgcr/811m4Yu6w==\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/v1/admin/auth/login",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"admin",
+										"auth",
+										"login"
+									]
+								},
+								"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+							},
+							"response": []
+						},
+						{
+							"name": "Admin Register",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Successful POST request\", function () {",
+											"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+											"});",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"username\": \"admin2\",\n    \"email\": \"admin2@example.com\",\n    \"password\": \"admin2\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/v1/admin/auth/register",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"admin",
+										"auth",
+										"register"
+									],
+									"query": [
+										{
+											"key": "username",
+											"value": "testuser",
+											"disabled": true
+										},
+										{
+											"key": "email",
+											"value": "test@example.com",
+											"disabled": true
+										},
+										{
+											"key": "password",
+											"value": "correctPassword",
+											"disabled": true
+										}
+									]
+								},
+								"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "User",
+					"item": [
+						{
+							"name": "pendingUsers",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-auth",
+										"value": "{{x-admin-auth}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/v1/admin/user/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"admin",
+										"user",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "approve User",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "x-auth",
+										"value": "{{x-admin-auth}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/v1/admin/user/:id/approve",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"admin",
+										"user",
+										":id",
+										"approve"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "block user",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "x-auth",
+										"value": "{{x-admin-auth}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/v1/admin/user/:id/block",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"admin",
+										"user",
+										":id",
+										"block"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Client Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\": \"testuser\",\n    \"password\": \"test123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/v1/client/auth/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"client",
+								"auth",
+								"login"
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Client Register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\": \"testuser\",\n    \"password\": \"test123\",\n    \"email\": \"test@example.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/v1/client/auth/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"client",
+								"auth",
+								"register"
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "User Data",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-auth",
+								"value": "{{x-auth}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/v1/client/users/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"client",
+								"users",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Blog",
+			"item": [
+				{
+					"name": "GroupBlog",
+					"item": [
+						{
+							"name": "addBlogToGroup",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-auth",
+										"value": "{{x-auth}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"Blog Title\",\n    \"content\": \"Blog Content\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/v1/client/blogs/groups/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"client",
+										"blogs",
+										"groups",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateBlogInGroup",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-auth",
+										"value": "{{x-auth}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"Updated Title\",\n    \"content\": \"Updated Content\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/v1/client/blogs/groups/blog/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"client",
+										"blogs",
+										"groups",
+										"blog",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "5"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "approveGroupBlog",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "x-auth",
+										"value": "{{x-auth}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/v1/client/blogs/groups/blog/:id/approve",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"client",
+										"blogs",
+										"groups",
+										"blog",
+										":id",
+										"approve"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getGroupBlogs",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-auth",
+										"value": "{{x-auth}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/v1/client/blogs/groups/:id/blogs",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"client",
+										"blogs",
+										"groups",
+										":id",
+										"blogs"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getUserGroupBlogs",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-auth",
+										"value": "{{x-auth}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/v1/client/blogs/groups/:id/user-blogs",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"client",
+										"blogs",
+										"groups",
+										":id",
+										"user-blogs"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getGroupBlogDetail",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-auth",
+										"value": "{{x-auth}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/v1/client/blogs/groups/:groupId/blogs/:blogId",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"client",
+										"blogs",
+										"groups",
+										":groupId",
+										"blogs",
+										":blogId"
+									],
+									"variable": [
+										{
+											"key": "groupId",
+											"value": "3"
+										},
+										{
+											"key": "blogId",
+											"value": "6"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "archiveGroupBlog",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "x-auth",
+										"value": "{{x-auth}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/v1/client/blogs/groups/:groupId/blogs/:blogId/archive",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"client",
+										"blogs",
+										"groups",
+										":groupId",
+										"blogs",
+										":blogId",
+										"archive"
+									],
+									"variable": [
+										{
+											"key": "groupId",
+											"value": "3"
+										},
+										{
+											"key": "blogId",
+											"value": "6"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteBlogInGroup",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "x-auth",
+										"value": "{{x-auth}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/v1/client/blogs/groups/blog/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"client",
+										"blogs",
+										"groups",
+										"blog",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "7"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "getPublicBlogs",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-auth",
+								"value": "{{x-auth}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/v1/client/blogs",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"client",
+								"blogs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getBlogById",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-auth",
+								"value": "{{x-auth}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/v1/client/blogs",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"client",
+								"blogs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUserPublicBlogs",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-auth",
+								"value": "{{x-auth}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/v1/client/blogs/user/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"client",
+								"blogs",
+								"user",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create Blog",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-auth",
+								"value": "{{x-auth}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Blog Title2\"\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/v1/client/blogs",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"client",
+								"blogs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update Blog",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-auth",
+								"value": "{{x-auth}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Blog Title3\",\n    \"content\": \"Blog Content3\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/v1/client/blogs/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"client",
+								"blogs",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "archive Blog",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "x-auth",
+								"value": "{{x-auth}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/v1/client/blogs/:id/archive",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"client",
+								"blogs",
+								":id",
+								"archive"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "softDelete Blog",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "x-auth",
+								"value": "{{x-auth}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/v1/client/blogs/:id/soft-delete",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"client",
+								"blogs",
+								":id",
+								"soft-delete"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "publish Blog",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "x-auth",
+								"value": "{{x-auth}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/v1/client/blogs/:id/publish",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"client",
+								"blogs",
+								":id",
+								"publish"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "restore Blog",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "x-auth",
+								"value": "{{x-auth}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/v1/client/blogs/:id/restore",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"client",
+								"blogs",
+								":id",
+								"restore"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Groups",
+			"item": [
+				{
+					"name": "Members",
+					"item": [
+						{
+							"name": "join Group",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-auth",
+										"value": "{{x-auth}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/v1/client/groups/:groupId/members",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"client",
+										"groups",
+										":groupId",
+										"members"
+									],
+									"variable": [
+										{
+											"key": "groupId",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "addMemberToGroup",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-auth",
+										"value": "{{x-auth}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/v1/client/groups/:groupId/members/:userId",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"client",
+										"groups",
+										":groupId",
+										"members",
+										":userId"
+									],
+									"variable": [
+										{
+											"key": "groupId",
+											"value": "3"
+										},
+										{
+											"key": "userId",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "removeMemberFromGroup",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "x-auth",
+										"value": "{{x-auth}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/v1/client/groups/:groupId/members/:userId",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"client",
+										"groups",
+										":groupId",
+										"members",
+										":userId"
+									],
+									"variable": [
+										{
+											"key": "groupId",
+											"value": "3"
+										},
+										{
+											"key": "userId",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "selectCoAdmin",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-auth",
+										"value": "{{x-auth}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/v1/client/groups/:groupId/co-admin/:userId",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"client",
+										"groups",
+										":groupId",
+										"co-admin",
+										":userId"
+									],
+									"variable": [
+										{
+											"key": "groupId",
+											"value": "3"
+										},
+										{
+											"key": "userId",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "revokeCoAdmin",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "x-auth",
+										"value": "{{x-auth}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/v1/client/groups/:groupId/co-admin/:userId",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"client",
+										"groups",
+										":groupId",
+										"co-admin",
+										":userId"
+									],
+									"variable": [
+										{
+											"key": "groupId",
+											"value": "3"
+										},
+										{
+											"key": "userId",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "getGroups",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-auth",
+								"value": "{{x-auth}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/v1/client/groups",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"client",
+								"groups"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUserGroups",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-auth",
+								"value": "{{x-auth}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/v1/client/groups/user/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"client",
+								"groups",
+								"user",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getGroupById",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-auth",
+								"value": "{{x-auth}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/v1/client/groups/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"client",
+								"groups",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createGroup",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-auth",
+								"value": "{{x-auth}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\" : \"second group\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/v1/client/groups/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"client",
+								"groups",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateGroup",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-auth",
+								"value": "{{x-auth}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\" : \"2. group\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/v1/client/groups/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"client",
+								"groups",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete Group",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-auth",
+								"value": "{{x-auth}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/v1/client/groups/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"client",
+								"groups",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
