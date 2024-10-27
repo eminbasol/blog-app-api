@@ -24,6 +24,9 @@ A TypeScript-based Express application that uses Prisma for ORM. This boilerplat
 
 ```bash
 git clone https://github.com/eminbasol/blog-app-api.git
+```
+
+```bash
 cd blog-app-api
 ```
 
@@ -33,7 +36,7 @@ cd blog-app-api
 3. Start the application with Docker:
 
 ```bash
-docker-compose up
+docker compose up
 ```
 
 ## Scripts
