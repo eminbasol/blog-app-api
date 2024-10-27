@@ -72,6 +72,8 @@ Here’s a summary of available npm scripts:
 
 # Project: Blog-App-API-Collection
 
+This is a Postman collection for the Blog App API. It contains all the endpoints for the API, including the request body, headers, and query parameters. The collection is organized into folders based on the different features of the API, such as authentication, users, blogs, and groups. Each folder contains multiple requests that correspond to different endpoints of the API.
+
 # 📁 Collection: Admin
 
 ## End-point: Admin Login
@@ -106,16 +108,16 @@ A successful POST request typically returns a `200 OK` or `201 Created` response
 ### Method: POST
 
 > ```
-> {{base_url}}/v1/client/auth/register
+> {{base_url}}/v1/admin/auth/register
 > ```
 
 ### Body (**raw**)
 
 ```json
 {
-	"username": "testuser",
-	"email": "test@example.com",
-	"password": "tessdfdsft"
+	"username": "admin2",
+	"email": "admin2@example.com",
+	"password": "admin2"
 }
 ```
 
