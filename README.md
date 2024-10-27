@@ -319,10 +319,7 @@ A successful GET response will have a `200 OK` status, and should include some k
 ### Body (**raw**)
 
 ```json
-{
-	"title": "Updated Title",
-	"content": "Updated Content"
-}
+
 ```
 
 ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃
@@ -344,10 +341,7 @@ A successful GET response will have a `200 OK` status, and should include some k
 ### Body (**raw**)
 
 ```json
-{
-	"title": "Updated Title",
-	"content": "Updated Content"
-}
+
 ```
 
 ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃
@@ -369,10 +363,7 @@ A successful GET response will have a `200 OK` status, and should include some k
 ### Body (**raw**)
 
 ```json
-{
-	"title": "Updated Title",
-	"content": "Updated Content"
-}
+
 ```
 
 ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃
@@ -426,10 +417,7 @@ A successful GET response will have a `200 OK` status, and should include some k
 ### Body (**raw**)
 
 ```json
-{
-	"title": "Updated Title",
-	"content": "Updated Content"
-}
+
 ```
 
 ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃
@@ -444,9 +432,9 @@ A successful GET response will have a `200 OK` status, and should include some k
 
 ### Headers
 
-| Content-Type | Value                                                                                                                                                                                       |
-| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| x-auth       | eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJuYW1lIjoidGVzdHVzZXIiLCJpYXQiOjE3Mjk5NTg2MTgsImV4cCI6MTcyOTk2MjIxOCwiaXNzIjoiZWIifQ.4s5BMQDxBKo9sSX03q6C0vosv7Lo170CcGeG5wt_8a0 |
+| Content-Type | Value      |
+| ------------ | ---------- |
+| x-auth       | {{x-auth}} |
 
 ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃
 
@@ -525,7 +513,7 @@ A successful GET response will have a `200 OK` status, and should include some k
 ```json
 {
 	"title": "Blog Title3",
-	"content": "Blog Content2"
+	"content": "Blog Content3"
 }
 ```
 
@@ -548,10 +536,7 @@ A successful GET response will have a `200 OK` status, and should include some k
 ### Body (**raw**)
 
 ```json
-{
-	"title": "Blog Title3",
-	"content": "Blog Content2"
-}
+
 ```
 
 ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃
@@ -573,10 +558,7 @@ A successful GET response will have a `200 OK` status, and should include some k
 ### Body (**raw**)
 
 ```json
-{
-	"title": "Blog Title3",
-	"content": "Blog Content2"
-}
+
 ```
 
 ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃
