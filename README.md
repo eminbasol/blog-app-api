@@ -13,11 +13,27 @@ A TypeScript-based Express application that uses Prisma for ORM. This boilerplat
 - Testing setup with Mocha, Chai, and Supertest
 - Redis, rate limit
 - Logger, winston
+- Role-Based Access Control
+- Single-Device Login Enforcement
+- Soft Delete & Archiving
+- User Registration Approval
 
 ## Getting Started
 
+1. Clone the repository:
+
 ```bash
-docker compose up -d
+git clone https://github.com/eminbasol/blog-app-api.git
+cd blog-app-api
+```
+
+2. Set up environment variables:
+   I shared .env.example file. You can create a .env file and copy the contents of .env.example file to .env file. Then, if you want to change the values, you can change them.
+
+3. Start the application with Docker:
+
+```bash
+docker-compose up
 ```
 
 ## Scripts
